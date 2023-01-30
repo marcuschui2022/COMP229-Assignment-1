@@ -5,6 +5,7 @@ npm-debug.log
 .DS_Store
 .elasticbeanstalk/
 elasticbeanstalk
+package-lock.json
 # Elastic Beanstalk Files
 .elasticbeanstalk/*
 !.elasticbeanstalk/*.cfg.yml
