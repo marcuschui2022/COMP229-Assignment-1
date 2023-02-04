@@ -93,6 +93,13 @@ nav-link {
   /* margin-right: 20px; */
 }
 
+.hero-title2 {
+  font-size: 35px;
+  margin: 0 0 10px;
+  color: #fff;
+  /* margin-right: 20px; */
+}
+
 .hero-desc {
   font-size: 18px;
   color: rgba(255, 255, 255, 0.8);
