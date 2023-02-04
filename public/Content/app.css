@@ -58,6 +58,19 @@ nav-link {
   background-color: rgba(16, 17, 30, 0.6);
 }
 
+.hero-inner::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  border-radius: 30px;
+  /* background-color: rgba(16, 17, 30, 0.6); */
+}
+
 .hero-image {
   padding-top: 50%;
   min-height: 380px;
@@ -95,6 +108,13 @@ nav-link {
 
 .hero-title2 {
   font-size: 35px;
+  margin: 0 0 10px;
+  color: #fff;
+  /* margin-right: 20px; */
+}
+
+.hero-title3 {
+  font-size: 25px;
   margin: 0 0 10px;
   color: #fff;
   /* margin-right: 20px; */
