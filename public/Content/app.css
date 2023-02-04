@@ -60,7 +60,7 @@ nav-link {
 
 .hero-image {
   padding-top: 50%;
-  min-height: 280px;
+  min-height: 380px;
   user-select: none;
 }
 
@@ -111,4 +111,29 @@ nav-link {
 
 .logo {
   max-width: 80px;
+}
+
+.btn-about-me {
+  padding: 0 1.8rem;
+  height: 50px;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 50px;
+  background-color: #323a96;
+
+  display: inline-block;
+  white-space: nowrap;
+  vertical-align: middle;
+  font: inherit;
+  border: none;
+  border-radius: 5px;
+  outline: none;
+
+  text-align: center;
+  text-decoration: none;
+  color: #fff;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  /* margin-top: 10px; */
+  margin-bottom: 10px;
 }
