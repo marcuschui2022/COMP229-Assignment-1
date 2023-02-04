@@ -108,3 +108,7 @@ nav-link {
 .col-12 {
   width: 100%;
 }
+
+.logo {
+  max-width: 80px;
+}
