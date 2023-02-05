@@ -1,11 +1,11 @@
 // IIFE -- Immediately Invoked Function Expression
-(function(){
+// Name: Chui Kwok Yuk Student
+// Number: 301246550
+// Last Modified Date: 4 Feb 2023
+(function () {
+  function Start() {
+    console.log("App Started...");
+  }
 
-    function Start()
-    {
-        console.log("App Started...");
-    }
-
-    window.addEventListener("load", Start);
-
+  window.addEventListener("load", Start);
 })();
