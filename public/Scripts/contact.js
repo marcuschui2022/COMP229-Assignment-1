@@ -6,14 +6,16 @@ const form = document.getElementById("contactForm");
 const formData = new FormData(form);
 
 form.addEventListener("submit", function (e) {
-  //   e.preventDefault();
+  e.preventDefault();
 
   let displayMsg = "This is the details you want to send: \n";
 
+  // console.log(formData);
   for (const [key, value] of formData) {
-    console.log(displayMsg);
+    // console.log(displayMsg);
     displayMsg += `${key}: ${value}\n`;
   }
-  console.log(displayMsg);
+  // console.log(displayMsg);
   alert(displayMsg);
+  window.location.href = "/";
 });
