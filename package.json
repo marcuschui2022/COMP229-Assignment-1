@@ -1,6 +1,6 @@
 {
-  "name": "comp229-assignment-1",
-  "version": "0.0.1",
+  "name": "comp229-assignment-2",
+  "version": "0.0.2",
   "private": true,
   "scripts": {
     "start": "node server.js",
@@ -23,7 +23,7 @@
     "popper.js": "^1.16.1",
     "serve-favicon": "^2.5.0"
   },
-  "description": "Week3 Assignment 1",
+  "description": "COMP229 Assignment 2",
   "main": "server.js",
   "devDependencies": {
     "nodemon": "^2.0.20"
