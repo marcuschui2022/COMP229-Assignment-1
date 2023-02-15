@@ -9,6 +9,7 @@ let favicon = require("serve-favicon");
 // database setup
 let mongoose = require("mongoose");
 let DB = require("./config/db");
+const { seedUser } = require("./models/seedUser");
 
 mongoose.set("strictQuery", false);
 
@@ -23,6 +24,9 @@ mongoDB.on("error", console.error.bind(console, "Connection Error:"));
 mongoDB.once("open", () => {
   console.log("Connected to MongoDB...");
 });
+
+// seed user
+seedUser().then(() => console.log("seed user completed."));
 
 let indexRouter = require("./routes/index");
 let usersRouter = require("./routes/users");
