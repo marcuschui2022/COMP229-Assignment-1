@@ -1,3 +1,4 @@
+require("dotenv").config();
 // installed 3rd party packages
 let createError = require("http-errors");
 let express = require("express");
@@ -7,10 +8,9 @@ let logger = require("morgan");
 let favicon = require("serve-favicon");
 var passport = require("passport");
 var session = require("express-session");
-require("dotenv").config();
+var MongoDBStore = require("connect-mongodb-session")(session);
 // database setup
 let mongoose = require("mongoose");
-const MongoStore = require("connect-mongo");
 
 let DB = require("./config/db");
 
@@ -34,6 +34,15 @@ let authRouter = require("./routes/auth");
 
 let app = express();
 
+var store = new MongoDBStore({
+  uri: process.env.MongoConnectionSessionString,
+  collection: "sessions",
+});
+
+store.on("error", function (error) {
+  console.log(error);
+});
+
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs"); // express  -e
@@ -49,11 +58,12 @@ app.use(favicon(path.join(__dirname, "public", "favicon.ico")));
 app.use(
   session({
     secret: "keyboard cat",
-    // resave: false,
-    // saveUninitialized: false,
-    store: MongoStore.create({
-      mongoUrl: process.env.MongoConnectionSessionString,
-    }),
+    cookie: {
+      maxAge: 1000 * 60 * 60 * 24 * 7, // 1 week
+    },
+    resave: true,
+    saveUninitialized: true,
+    store: store,
     // store: new SQLiteStore({
     //   db: "sessions.db",
     //   dir: path.join(__dirname, "db"),
