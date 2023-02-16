@@ -7,10 +7,11 @@ let logger = require("morgan");
 let favicon = require("serve-favicon");
 var passport = require("passport");
 var session = require("express-session");
-var SQLiteStore = require("connect-sqlite3")(session);
-
+require("dotenv").config();
 // database setup
 let mongoose = require("mongoose");
+const MongoStore = require("connect-mongo");
+
 let DB = require("./config/db");
 
 mongoose.set("strictQuery", false);
@@ -50,10 +51,13 @@ app.use(
     secret: "keyboard cat",
     resave: false,
     saveUninitialized: false,
-    store: new SQLiteStore({
-      db: "sessions.db",
-      dir: path.join(__dirname, "db"),
+    store: MongoStore.create({
+      mongoUrl: process.env.MongoConnectionSessionString,
     }),
+    // store: new SQLiteStore({
+    //   db: "sessions.db",
+    //   dir: path.join(__dirname, "db"),
+    // }),
     // store: new SQLiteStore({ db: "sessions.db", dir: "./var/db" }),
   })
 );
