@@ -18,6 +18,10 @@ const User = mongoose.Schema(
       lowercase: true,
       required: "password is required",
     },
+    salt: {
+      type: String,
+      required: true,
+    },
     email: {
       type: String,
       match: /.+\@.+\..+/,
