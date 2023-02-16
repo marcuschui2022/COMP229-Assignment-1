@@ -5,6 +5,9 @@ let path = require("path");
 let cookieParser = require("cookie-parser");
 let logger = require("morgan");
 let favicon = require("serve-favicon");
+var passport = require("passport");
+var session = require("express-session");
+var SQLiteStore = require("connect-sqlite3")(session);
 
 // database setup
 let mongoose = require("mongoose");
@@ -25,11 +28,9 @@ mongoDB.once("open", () => {
   console.log("Connected to MongoDB...");
 });
 
-// seed user
-seedUser().then(() => console.log("seed user completed."));
-
 let indexRouter = require("./routes/index");
 let usersRouter = require("./routes/users");
+let authRouter = require("./routes/auth");
 
 let app = express();
 
@@ -45,8 +46,23 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(express.static(path.join(__dirname, "node_modules")));
 app.use(favicon(path.join(__dirname, "public", "favicon.ico")));
 
+app.use(
+  session({
+    secret: "keyboard cat",
+    resave: false,
+    saveUninitialized: false,
+    store: new SQLiteStore({
+      db: "sessions.db",
+      dir: path.join(__dirname, "db"),
+    }),
+    // store: new SQLiteStore({ db: "sessions.db", dir: "./var/db" }),
+  })
+);
+app.use(passport.authenticate("session"));
+
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
+app.use("/auth", authRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
