@@ -49,8 +49,8 @@ app.use(favicon(path.join(__dirname, "public", "favicon.ico")));
 app.use(
   session({
     secret: "keyboard cat",
-    resave: false,
-    saveUninitialized: false,
+    // resave: false,
+    // saveUninitialized: false,
     store: MongoStore.create({
       mongoUrl: process.env.MongoConnectionSessionString,
     }),
