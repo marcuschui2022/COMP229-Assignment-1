@@ -12,6 +12,13 @@
 
             <% if (typeof user === 'undefined') { %>
             <h1 class="hero-title"><%= title %></h1>
+            <% if (hasMessages) { %>
+            <section class="messages">
+              <% messages.forEach(function(message) { %>
+              <p style="color: red"><%= message %></p>
+              <% }); %>
+            </section>
+            <% } %>
             <form action="/auth/login" method="post">
               <!-- Email input -->
               <label class="login-label" for="username">User Name</label>

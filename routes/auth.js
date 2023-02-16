@@ -78,6 +78,7 @@ router.post(
   passport.authenticate("local", {
     successRedirect: "/business",
     failureRedirect: "/auth/login",
+    failureMessage: true,
   })
 );
 
