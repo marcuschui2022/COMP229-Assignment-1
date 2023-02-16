@@ -12,7 +12,6 @@ var SQLiteStore = require("connect-sqlite3")(session);
 // database setup
 let mongoose = require("mongoose");
 let DB = require("./config/db");
-const { seedUser } = require("./models/seedUser");
 
 mongoose.set("strictQuery", false);
 
