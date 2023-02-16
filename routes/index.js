@@ -3,8 +3,6 @@ var router = express.Router();
 
 /* GET home page. */
 router.get("/", function (req, res, next) {
-  console.log("hihihi");
-  console.log(req.user);
   res.render("index", { title: "Home", user: req.user });
 });
 
@@ -15,8 +13,6 @@ router.get("/login", function (req, res, next) {
 
 /* GET home page. */
 router.get("/home", function (req, res, next) {
-  console.log("hihihi");
-  console.log(req.user);
   res.render("index", { title: "Home", user: req.user });
 });
 

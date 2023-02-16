@@ -42,12 +42,12 @@ passport.use(
             return cb(err);
           }
           if (user.password !== hashedPassword.toString("hex")) {
-            console.log("not right");
+            // console.log("not right");
             return cb(null, false, {
               message: "Incorrect username or password.",
             });
           }
-          console.log("right");
+          // console.log("right");
           return cb(null, user);
         }
       );
