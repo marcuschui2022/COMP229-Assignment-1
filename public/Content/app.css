@@ -175,3 +175,33 @@ nav-link {
   /* display: block; */
   text-align: left;
 }
+
+.row-business-create {
+  display: flex;
+  flex-direction: row;
+}
+
+.btn-about-me2 {
+  padding: 0 1.8rem;
+  height: 50px;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 50px;
+  background-color: #323a96;
+
+  display: inline-block;
+  white-space: nowrap;
+  vertical-align: middle;
+  font: inherit;
+  border: none;
+  border-radius: 5px;
+  outline: none;
+
+  text-align: center;
+  text-decoration: none;
+  color: #fff;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  margin-top: 0px;
+  /* margin-bottom: 10px; */
+}

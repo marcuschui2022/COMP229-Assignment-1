@@ -4,56 +4,47 @@
 <main class="container">
   <div class="row">
     <h1 class="hero-title"><%= title %></h1>
-    <!-- <div class="col col-12">
-      <div class="hero">
-        <div class="hero-inner">
-          <div class="hero-image"></div>
-          <div class="hero-content">
-            <h1 class="hero-title">Welcome to my page.</h1>
-            <h1 class="hero-title"><%= title %></h1>
-            <p class="hero-desc">
-              Hi there! This site is for sharing information about me.
-            </p>
-            <p class="hero-desc">I coding, travel and eat.</p>
-            <a class="navbar-brand" href="/about">
-              <button class="btn-about-me" type="submit" name="subscribe">
-                About me
-              </button></a
-            >
-          </div>
-        </div>
-      </div>
-    </div> -->
+  </div>
+  <div class="row">
+    <a href="/business/create"
+      ><button class="btn-about-me" type="submit" name="subscribe">
+        Create New Business Contact
+      </button></a
+    >
   </div>
   <div class="row">
     <table class="table table-dark">
       <thead>
         <tr>
-          <th scope="col">#</th>
-          <th scope="col">First</th>
-          <th scope="col">Last</th>
-          <th scope="col">Handle</th>
+          <th scope="col">Contact Name</th>
+          <th scope="col">Contact Number</th>
+          <th scope="col">Email Address</th>
+          <th scope="col"></th>
+          <th scope="col"></th>
         </tr>
       </thead>
       <tbody>
+        <% for(var i=0; i < Object.keys(contacts).length; i++) { %>
         <tr>
-          <th scope="row">1</th>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>@mdo</td>
+          <td><%= contacts[i].contactName %></td>
+          <td><%= contacts[i].contactNumber %></td>
+          <td><%= contacts[i].emailAddress %></td>
+          <td>
+            <a href="/business/update/<%= contacts[i]._id %>">
+              <button class="btn-about-me" type="submit" name="subscribe">
+                Update
+              </button></a
+            >
+          </td>
+          <td>
+            <a href="/business/delete/<%= contacts[i]._id %>"
+              ><button class="btn-about-me" type="submit" name="subscribe">
+                Delete
+              </button></a
+            >
+          </td>
         </tr>
-        <tr>
-          <th scope="row">2</th>
-          <td>Jacob</td>
-          <td>Thornton</td>
-          <td>@fat</td>
-        </tr>
-        <tr>
-          <th scope="row">3</th>
-          <td>Larry</td>
-          <td>the Bird</td>
-          <td>@twitter</td>
-        </tr>
+        <% } %>
       </tbody>
     </table>
   </div>
