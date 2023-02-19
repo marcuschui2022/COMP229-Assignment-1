@@ -1,6 +1,7 @@
 // require modules for the BusinessContacts Model
 const mongoose = require("mongoose");
 
+// create a BusinessContacts Schema
 const BusinessContacts = mongoose.Schema(
   {
     contactName: {

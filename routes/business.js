@@ -26,9 +26,9 @@ router.get("/create", function (req, res, next) {
 });
 
 router.post("/create", function (req, res, next) {
-  const { contactName, contactNumber, emailAddress } = req.body;
+  if (!req.user) return res.send("auth erro");
 
-  //   console.log(req.body);
+  const { contactName, contactNumber, emailAddress } = req.body;
 
   const newBusinessContact = new BusinessContacts({
     contactName,
@@ -45,6 +45,8 @@ router.post("/create", function (req, res, next) {
 });
 
 router.get("/delete/:id", function (req, res, next) {
+  if (!req.user) return res.send("auth erro");
+
   let id = req.params.id;
 
   BusinessContacts.remove({ _id: id }, (err) => {
@@ -59,6 +61,8 @@ router.get("/delete/:id", function (req, res, next) {
 });
 
 router.post("/update/:id", function (req, res, next) {
+  if (!req.user) return res.send("auth erro");
+
   let id = req.params.id;
   const { contactName, contactNumber, emailAddress } = req.body;
 
@@ -81,6 +85,8 @@ router.post("/update/:id", function (req, res, next) {
 });
 
 router.get("/update/:id", function (req, res, next) {
+  if (!req.user) return res.send("auth erro");
+
   let id = req.params.id;
 
   BusinessContacts.findById({ _id: id }, (err, businessContact) => {
