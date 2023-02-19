@@ -5,14 +5,15 @@ var router = express.Router();
 /* GET Business Contacts List. */
 router.get("/", function (req, res, next) {
   if (req.user) {
-    BusinessContacts.find().then((contacts) => {
-      //   console.log(contacts);
-      res.render("business/index", {
-        title: "Create New Business Contact",
-        user: req.user,
-        contacts: contacts,
+    BusinessContacts.find()
+      .sort({ contactName: 1 })
+      .then((contacts) => {
+        res.render("business/index", {
+          title: "Create New Business Contact",
+          user: req.user,
+          contacts: contacts,
+        });
       });
-    });
   } else {
     res.redirect("/auth/login");
   }
