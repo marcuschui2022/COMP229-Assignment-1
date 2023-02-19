@@ -4,6 +4,8 @@ var router = express.Router();
 
 /* GET Business Contacts List. */
 router.get("/", function (req, res, next) {
+  if (!req.user) return res.send("auth erro");
+
   if (req.user) {
     BusinessContacts.find()
       .sort({ contactName: 1 })
@@ -20,6 +22,8 @@ router.get("/", function (req, res, next) {
 });
 
 router.get("/create", function (req, res, next) {
+  if (!req.user) return res.send("auth erro");
+
   res.render("business/create", {
     title: "Create New Business Contact",
     user: req.user,
